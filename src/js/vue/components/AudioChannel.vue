@@ -2,7 +2,7 @@
     <div class="audio-channel">
         <div class="audio-channel__label">
             <label>
-                <input type="text" v-model="state.name" />
+                <input type="text" v-model="props.asset.name" />
             </label>
         </div>
         <button @click="togglePlay">
@@ -50,19 +50,20 @@
     </div>
 </template>
 <script setup lang="ts">
+import type { AudioAsset } from '../../types'
 import { inject, onMounted, reactive } from 'vue'
+// Tone is sort of a pseudo type. don't fully understand this but it works
 import type { Tone, Player, Filter, Solo } from 'tone'
 
 export interface Props {
-    audioUrl: String
-    player: Player
+    asset: AudioAsset
 }
 
 export interface Reactive {
     isPlaying: boolean
     isMuted: boolean
     isSoloed: boolean
-    name: String
+    name: string
 }
 
 const props = defineProps<Props>()
@@ -76,15 +77,14 @@ let state: Reactive = reactive({
 })
 
 // locally scoped player
-let player: Player
+let player: Player = new $tone.Player()
 let filter: Filter
 let solo: Solo
 
 onMounted(() => {
-    player = new $tone.Player({
-        url: props.audioUrl,
-        loop: true,
-    })
+    player.load(props.asset.url)
+    player.loop = true
+
     filter = new $tone.Filter({ type: 'lowpass', frequency: 20000 })
     solo = new $tone.Solo()
 
@@ -133,110 +133,3 @@ function toggleSolo() {
     })
 }
 </script>
-<style scoped lang="scss">
-.audio-channel {
-    background: #4e5863;
-    border: 2px solid #c98c39;
-    position: relative;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 6rem;
-    color: white;
-    text-align: center;
-
-    padding: 1rem;
-}
-
-label {
-    width: 100%;
-
-    input {
-        width: 100%;
-    }
-}
-
-input[type='range'] {
-    width: 100%;
-}
-
-input[type='range']::-webkit-slider-runnable-track,
-input[type='range']::-moz-range-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    background: #3071a9;
-    border-radius: 1.3px;
-}
-
-input[type='range'][orient='vertical']::-webkit-slider-runnable-track,
-input[type='range'][orient='vertical']::-moz-range-track {
-    height: 100%;
-    width: 8.4px;
-}
-
-input[type='range']:focus::-webkit-slider-runnable-track {
-    background: #367ebd;
-}
-
-input[type='range']::-ms-track {
-    width: 100%;
-    height: 8.4px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    border-width: 16px 0;
-    color: transparent;
-}
-input[type='range']::-ms-fill-lower {
-    background: #2a6495;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type='range']:focus::-ms-fill-lower {
-    background: #3071a9;
-}
-input[type='range']::-ms-fill-upper {
-    background: #3071a9;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type='range']:focus::-ms-fill-upper {
-    background: #367ebd;
-}
-
-.toggle {
-    &-wrap {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    border: 1px solid black;
-    border-radius: 3px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.75rem;
-
-    padding: 0.25rem;
-
-    width: 24px;
-    aspect-ratio: 1/1;
-
-    &.active {
-        &[data-function='mute'] {
-            background: red;
-            color: white;
-        }
-
-        &[data-function='solo'] {
-            background: yellow;
-            color: black;
-        }
-    }
-}
-</style>

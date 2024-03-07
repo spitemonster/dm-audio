@@ -2,9 +2,9 @@
     "name": "app",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "type": "module",
     "scripts": {
-        "dev": "npx parcel src/index.html"
+        "dev": "parcel watch src/index.html src/js/server/server.ts --no-cache & nodemon dist/src/js/server.js"
     },
     "author": "",
     "license": "ISC",
@@ -12,11 +12,32 @@
         "@parcel/transformer-sass": "^2.8.1",
         "@parcel/transformer-vue": "^2.8.1",
         "@vue/tsconfig": "^0.1.3",
-        "parcel": "^2.8.1"
+        "assert": "^2.0.0",
+        "browserify-zlib": "^0.2.0",
+        "buffer": "^5.7.1",
+        "crypto-browserify": "^3.12.0",
+        "events": "^3.3.0",
+        "parcel": "^2.8.1",
+        "path-browserify": "^1.0.1",
+        "process": "^0.11.10",
+        "punycode": "^1.4.1",
+        "querystring-es3": "^0.2.1",
+        "stream-browserify": "^3.0.0",
+        "stream-http": "^3.2.0",
+        "string_decoder": "^1.3.0",
+        "url": "^0.11.0",
+        "util": "^0.12.5"
     },
     "dependencies": {
+        "body-parser": "^1.20.1",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "express-fileupload": "^1.4.0",
         "mitt": "^3.0.0",
+        "multer": "^1.4.5-lts.1",
+        "nodemon": "^2.0.20",
         "tone": "^14.7.77",
-        "vue": "^3.2.45"
+        "vue": "^3.2.45",
+        "wait-on": "^7.0.1"
     }
 }
