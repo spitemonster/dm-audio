@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, inject } from 'vue'
-import type { AudioAsset } from '../../types'
+import type { AudioAsset } from '../../../../types'
 import type { Emitter } from 'mitt'
 
 let fileSelected: boolean = false

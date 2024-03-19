@@ -39,8 +39,8 @@
 
 <script setup lang="ts">
 import type { Tone } from 'tone'
-import type { AudioAsset } from '../types'
-import type { AudioBlock } from '../types'
+import type { AudioAsset } from '../../../types'
+import type { AudioBlock } from '../../../types'
 import type { Emitter } from 'mitt'
 import { inject, onMounted, ref, reactive, watch } from 'vue'
 

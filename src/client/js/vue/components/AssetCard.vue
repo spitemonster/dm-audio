@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { inject, onMounted, reactive, ref, toRef, watch, computed } from 'vue'
-import type { AudioAsset, Tag } from '../../types'
+import type { AudioAsset, Tag } from '../../../../types'
 import { Reverb } from 'tone'
 import type { Emitter } from 'mitt'
 export interface Props {

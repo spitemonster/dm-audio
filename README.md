@@ -1,6 +1,6 @@
 # dm audio
 
-a web app for audio scene setting for ttrpg Game Masters. use your own files, save your presets.
+a web app for audio scene setting for ttrpg Game Masters. use your own files, save and recall scenes.
 
 ## roadmap
 
@@ -11,3 +11,5 @@ a web app for audio scene setting for ttrpg Game Masters. use your own files, sa
 -   [ ] preset scenes of parameter combinations
     -   [ ] smooth scene transitions
 -   [ ] json export of scene settings
+
+## building and running

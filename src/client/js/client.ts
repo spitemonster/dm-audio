@@ -1,8 +1,9 @@
+import '../scss/global.scss'
+
 import mitt from 'mitt'
-import type Emitter from 'mitt'
+import type { Emitter } from 'mitt'
 import { createApp } from 'vue'
 
-// import mitt from 'mitt'
 import * as Tone from 'tone'
 
 import App from './vue/App.vue'
@@ -11,7 +12,8 @@ import AudioChannel from './vue/components/AudioChannel.vue'
 import AudioUpload from './vue/components/AudioUpload.vue'
 import AudioAssets from './vue/components/AudioAssets.vue'
 import AssetCard from './vue/components/AssetCard.vue'
-import type { AudioAsset } from './types'
+import type { AudioAsset } from '../../types'
+
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
         $tone: typeof Tone

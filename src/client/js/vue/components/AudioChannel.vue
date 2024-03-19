@@ -50,7 +50,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import type { AudioAsset } from '../../types'
+import type { AudioAsset } from '../../../../types'
 import { inject, onMounted, reactive } from 'vue'
 // Tone is sort of a pseudo type. don't fully understand this but it works
 import type { Tone, Player, Filter, Solo } from 'tone'

@@ -1,12 +1,12 @@
 {
-    "extends": "@vue/tsconfig/tsconfig.web.json",
-    "compilerOptions": {
+	"extends": "@vue/tsconfig/tsconfig.dom.json",
+	"compilerOptions": {
         "preserveConstEnums": true,
         "noImplicitAny": true,
         "strict": true,
         "isolatedModules": true,
-        "noImplicitThis": true
+        "noImplicitThis": true,
+        "verbatimModuleSyntax": true,
+        "noEmit": false
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
 }

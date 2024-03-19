@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { inject, onMounted, reactive } from 'vue'
-import type { AudioAsset } from '../../types'
+import type { AudioAsset } from '../../../../types'
 // import type AssetCardVue from './AssetCard.vue'
 
 export interface Props {
